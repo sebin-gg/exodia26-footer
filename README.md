@@ -1,38 +1,60 @@
 # Exodia '26 — email footer
 
-Dark signature footer modelled on the reference design: italic *Thanks & Regards*,
-white logo tile, thin divider, then name / phone / website / email. The tile is the
-**IEDC mark animating** into place, and the FOCES + μLearn marks sit in a partner row.
+Signature footer modelled on the reference design: italic *Thanks & Regards*, the IEDC
+logo tile, a thin divider, then name / phone / website / email, with the FOCES and μLearn
+marks in an "Organised by" row.
+
+## Live assets
+
+Images are served from GitHub Pages, so they work in a real inbox:
+
+```
+https://sebin-gg.github.io/exodia26-footer/assets/
+```
+
+Repo: <https://github.com/sebin-gg/exodia26-footer> (public, because free Pages requires it).
+Re-push `assets/` if you ever replace a logo.
 
 ## Files
 
 | File | What it is |
 | --- | --- |
-| `footer.html` | The footer to paste into Gmail / your mailer. Image URLs use `ASSET_BASE`. |
-| `preview.html` | Same footer with images inlined as base64 — open in a browser to check the look. Do **not** paste this one into email (Gmail strips data URIs). |
-| `assets/` | Logos to upload: `iedc-animated.gif`, `iedc-static.png`, `foces-dark.png`, `mulearn.png`, plus sources (`foces.svg`, `exodia.svg`). |
-| `make_assets.py` | Regenerates the animated IEDC tile and the logo files. Run `python make_assets.py`. |
-| `ref/` | The WhatsApp reference video + frames. |
+| `footer.html` | **Dark** footer — paste this into Gmail → Settings → Signature. |
+| `footer-light.html` | **Light** twin for light/white mail clients. Same content, light card. |
+| `preview.html`, `preview-light.png` … | Local look-checks with images inlined. Never paste these (Gmail strips data URIs). |
+| `assets/` | `iedc-animated.gif`, `iedc-static.png`, `foces-dark.png`, `mulearn.png`, plus the official sources (`ref-iedc-dark.png`, `foces.svg`, `exodia.svg`). |
+| `make_assets.py` | Regenerates the tile and logo files: `python make_assets.py`. |
+| `ref/` | The WhatsApp reference video. |
 
-## Using it
+## Details
 
-1. Upload `assets/` somewhere with a public https URL (GitHub Pages, R2, S3, Netlify).
-2. In `footer.html`, replace every `ASSET_BASE` with that URL, no trailing slash.
-3. Paste the block into Gmail → Settings → Signature, or your mailer template.
+- **Title** — EXODIA '26 / All Kerala Tech Gala
+- **Phone** — `+91 70126 84869` → `tel:+917012684869`
+- **Website** — `https://www.exodiacec.in`
+- **Email** — `exodiacec@gmail.com`
+- **Links** — FOCES → `foces.ceconline.edu`, μLearn → `mulearn.org`, tile → `exodiacec.in`
 
-## Details to check
+## The animated IEDC tile
 
-- **Email** — `exodiacec@gmail.com`.
-- **Phone** — `+91 70126 84869`, linked as `tel:+917012684869`.
-- **Website** — `https://www.exodiacec.in`.
-- **Links** — FOCES → `foces.ceconline.edu`, μLearn → `mulearn.org`, tile → `exodiacec.in`.
+The mark is cropped from the **official** IEDC lockup
+(`innovate.startupmission.in/assets/im/iedcrecb.png`) — the diamond symbol only, because
+the full lockup is 5:1 and unreadable at tile size.
 
-## Why a GIF and not SVG/CSS
+It has to be a GIF: Gmail and Outlook strip `<svg>`, `<style>` animations and `<canvas>`,
+so a GIF is the only thing that still moves in an inbox. Frame 0 is the finished logo, so
+clients that never animate it — or a preview thumbnail — still show a complete mark.
+`iedc-static.png` is that same frame as a PNG.
 
-Gmail and Outlook strip `<svg>`, `<style>` animations and `<canvas>`. An animated GIF
-is the only format that still moves inside an inbox, so the IEDC tile is a ~40 KB GIF.
-Frame 0 is the finished logo, so a client that never plays it (or a preview thumbnail)
-still shows a complete mark; `iedc-static.png` is that same frame if you need a PNG.
+## Breaking gracefully
 
-The checker mark is a redraw in the IEDC/KSUM visual language, not the official artwork —
-drop in the official PNG/GIF at `assets/iedc-animated.gif` to swap it wholesale.
+- Every `<img>` has real alt text naming the body, so blocked or unavailable images still
+  say what they were (images-off Gmail, corporate proxies, host outage).
+- Nothing meaningful lives inside an image: phone, site and email are live text links.
+- Layout is nested tables, so clients that strip the `<style>` block keep the right order;
+  the style block only adds mobile stacking below 480 px.
+- A dead host costs you the logos, not the contact details.
+
+## Logos
+
+FOCES ships as a white mark, so `foces-dark.png` is a recolour for the light card and the
+white pills. μLearn is used as supplied.
