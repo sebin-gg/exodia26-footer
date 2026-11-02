@@ -1,8 +1,9 @@
 # Exodia '26 — email footer
 
-Signature footer modelled on the reference design: italic *Thanks & Regards*, the Exodia
-logo tile, a thin divider, then name / phone / website / email, with IEDC Bootcamp,
-FOCES and μLearn in an "Organised by" row.
+Signature footer modelled on the reference design: the animated Exodia logo tile, a thin
+divider, then name / phone / website / email, with FOCES, μLearn and IEDC Bootcamp in an
+"Organised by" row. There is no sign-off line — it was removed so the footer works on
+replies as well as first contacts.
 
 All logos come from the official **Exodia 4.0** brand set
 (`exodia-4-0.vercel.app/brand/` — repo `sarin-ms/exodia-4.0`).
@@ -45,7 +46,11 @@ Repo: <https://github.com/sebin-gg/exodia26-footer> (public — free Pages requi
 - **Phone** — `+91 70126 84869` → `tel:+917012684869`
 - **Website** — `https://www.exodiacec.in`
 - **Email** — `exodiacec@gmail.com`
-- **Links** — FOCES → `foces.ceconline.edu`, μLearn → `mulearn.org`, tile → `exodiacec.in`
+- **Links** — FOCES → `foces.ceconline.edu`, μLearn → `mulearn.org`, IEDC →
+  `startupmission.kerala.gov.in/iedc`, college → `ceconline.edu`, tile → `exodiacec.in`
+- **Card colour** — the dark card is the Exodia 4.0 site background `#0d0c1a`
+  (`--color-background`), its border the site's `--color-surface` `#211d2e`, and the tile
+  sits on `--color-cinder` `#171422`. Taken from `exodia-4-0.vercel.app`'s stylesheet.
 
 ## Why the logos are PNG/GIF
 
